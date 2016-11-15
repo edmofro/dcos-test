@@ -14,7 +14,7 @@ node {
 
     // Build Docker image
     stage 'Build'
-    sh "docker build -t edmofro/dcos-test:${userName}-${gitCommit()} ."
+    sh "docker build -t mesosphere/software-architecture:${userName}-${gitCommit()} ."
 
     // Log in and push image to GitLab
     stage 'Publish'
@@ -27,6 +27,6 @@ node {
         ]]
     ) {
         sh "docker login -u '${env.DOCKERHUB_USERNAME}' -p '${env.DOCKERHUB_PASSWORD}' -e edmofro@gmail.com"
-        sh "docker push edmofro/dcos-test:${userName}-${gitCommit()}"
+        sh "docker push mesosphere/software-architecture:${userName}-${gitCommit()}"
     }
 }
