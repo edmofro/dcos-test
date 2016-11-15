@@ -30,3 +30,15 @@ node {
         sh "docker push mesosphere/software-architecture:${userName}-${gitCommit()}"
     }
 }
+
+// Deploy
+stage 'Deploy'
+
+marathon(
+    url: 'http://marathon.mesos:8080',
+    forceUpdate: false,
+    credentialsId: 'dcos-token',
+    filename: 'marathon.json',
+    appId: 'dcos-test-${userName}',
+    docker: "mesosphere/software-architecture:${userName}-${gitCommit()}".toString()
+)
