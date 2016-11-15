@@ -1,5 +1,5 @@
 {
-  "id": "/nginx-ssk2",
+  "id": "/edmofro-dcos-test",
   "cpus": 1,
   "mem": 128,
   "instances": 1,
